@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_form = filter_var(htmlspecialchars($_POST['user']), FILTER_SANITIZE_STRING);
     $password_form = filter_var(htmlspecialchars($_POST['password']), FILTER_SANITIZE_STRING);
     
-    include 'C:/ospanel/domains/experiment/db/functions.php';  // Обновите путь к вашим функциям базы данных если нужно
-    //include 'db/functions.php';  // Обновите путь к вашим функциям базы данных если нужно
+    include 'C:/ospanel/domains/experiment/db/functions.php'; 
+    //include 'db/functions.php';  
     $database = new Database();
     $connection = $database->connection();
     
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($user && password_verify($password_form, $user['password'])) {
             // Установка данных сессии и переадресация
-            setSessionData($statement, $user['id_user'], $user_form, $role); // Убедитесь, что функция setSessionData корректно работает
+            setSessionData($statement, $user['id_user'], $user_form, $role); 
             header('Location: ../index.php');
             exit;
         }
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo $errors; // Показываем ошибку если ни один из вариантов не подошел
 }
 
-//require 'views/login.view.php'; // Обновите путь к вашему файлу представления если нужно
+//require 'views/login.view.php'; 
 
-require '../views/login.view.php'; // Обновите путь к вашему файлу представления если нужно
+require '../views/login.view.php'; 
 ?>
